@@ -27,14 +27,11 @@ public class Main {
         String[] massStr;
         String line;
         Scanner scan = new Scanner(System.in);
-
         System.out.print("Введите выражение: ");
         line = scan.nextLine();
         scan.close();
         massStr = line.split(" ");
-
         if (massStr.length != 3) throw new DataInputException("Неверный ввод данных!");
-
         return massStr;
     }
 
