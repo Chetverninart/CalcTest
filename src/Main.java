@@ -11,6 +11,18 @@ public class Main {
         }
     }
 
+    public static String[] input(){
+        String[] massStr;
+        String line;
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Введите выражение: ");
+        line = scan.nextLine();
+        scan.close();
+        massStr = line.split(" ");
+        if (massStr.length != 3) throw new DataInputException("Неверный ввод данных!");
+        return massStr;
+    }
+
     public static void intCalc(String[] massStr) {
         int first = Integer.parseInt(massStr[0]);
         String sign = massStr[1];
@@ -24,21 +36,8 @@ public class Main {
         int first = romanToArabic(massStr[0]);
         String sign = massStr[1];
         int second = romanToArabic(massStr[2]);
-        check(first, second);
         int result = act(first, sign, second);
         System.out.println("Результат: " + arabicToRoman(result));
-    }
-
-    public static String[] input(){
-        String[] massStr;
-        String line;
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Введите выражение: ");
-        line = scan.nextLine();
-        scan.close();
-        massStr = line.split(" ");
-        if (massStr.length != 3) throw new DataInputException("Неверный ввод данных!");
-        return massStr;
     }
 
     public static int act(int first, String act, int second) {
