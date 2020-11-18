@@ -4,23 +4,29 @@ public class Main {
 
     public static void main(String[] args) {
         String[] massStr = input();
-        int first, second, result;
-        String sign;
         try {
-            first = Integer.parseInt(massStr[0]);
-            sign = massStr[1];
-            second = Integer.parseInt(massStr[2]);
-            check(first, second);
-            result = act(first, sign, second);
-            System.out.println("Результат: " + result);
+            intCalc(massStr);
         } catch (NumberFormatException e) {
-            first = romanToArabic(massStr[0]);
-            sign = massStr[1];
-            second = romanToArabic(massStr[2]);
-            check(first, second);
-            result = act(first, sign, second);
-            System.out.println("Результат: " + arabicToRoman(result));
+            romanCalc(massStr);
         }
+    }
+
+    public static void intCalc(String[] massStr) {
+        int first = Integer.parseInt(massStr[0]);
+        String sign = massStr[1];
+        int second = Integer.parseInt(massStr[2]);
+        check(first, second);
+        int result = act(first, sign, second);
+        System.out.println("Результат: " + result);
+    }
+
+    public static void romanCalc(String[] massStr) {
+        int first = romanToArabic(massStr[0]);
+        String sign = massStr[1];
+        int second = romanToArabic(massStr[2]);
+        check(first, second);
+        int result = act(first, sign, second);
+        System.out.println("Результат: " + arabicToRoman(result));
     }
 
     public static String[] input(){
@@ -76,38 +82,31 @@ public class Main {
         if (arabic < 1) throw new DataInputException("Неверный ввод данных!");
         int decades = arabic / 10;
         int units = arabic % 10;
-        String roman = "";
+        StringBuilder roman = new StringBuilder();
         if (decades < 4) {
-            for (int i = 1; i <= decades; i++) {
-                roman += "X";
-            }
+            roman.append("X".repeat(decades));
         } else if (decades == 4) {
-            roman += "XL";
+            roman.append("XL");
         } else if (decades == 9) {
-            roman += "XC";
+            roman.append("XC");
         } else if (decades == 10) {
-            roman += "C";
+            roman.append("C");
         } else {
-            roman += "L";
-            for (int i = 5; i < decades; i++) {
-                roman += "X";
-            }
+            roman.append("L");
+            roman.append("X".repeat(decades - 5));
         }
         if (units < 4) {
-            for (int i = 1; i <= units; i++) {
-                roman += "I";
-            }
+            roman.append("I".repeat(units));
         } else if (units == 4) {
-            roman += "IV";
+            roman.append("IV");
         } else if (units == 9) {
-            roman += "IX";
+            roman.append("IX");
         } else {
-            roman += "V";
-            for (int i = 5; i < units; i++) {
-                roman += "I";
-            }
+            roman.append("V");
+            roman.append("I".repeat(units - 5));
         }
-        return roman;
+
+        return roman.toString();
     }
 
 }
