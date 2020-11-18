@@ -46,7 +46,8 @@ public class Main {
             case "+": result = (first + second); break;
             case "-": result = (first - second); break;
             case "*": result = (first * second); break;
-            case "/":   if ((first % second) != 0) { throw  new DataInputException("Результат не целый"); }
+            case "/":   if ((first % second) != 0 )  throw  new DataInputException("Результат не целый");
+                        if (second > first)  throw  new DataInputException("Неверный ввод данных!");
                       result = (first / second); break;
             default: throw new DataInputException("Неверный ввод данных!");
         }
