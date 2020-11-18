@@ -36,7 +36,6 @@ class Main {
         RomanOperand firstRoman = new RomanOperand(massStr[0]);
         String sign = massStr[1];
         RomanOperand secondRoman = new RomanOperand(massStr[2]);
-
         int result = Operations.act(firstRoman.getIntValue(), sign, secondRoman.getIntValue());
         System.out.println("Результат: " + Operations.arabicToRoman(result));
     }
