@@ -1,4 +1,4 @@
-class Operations {
+class Translate {
 
     static int romanToArabic(String roman) {
         int result;
@@ -13,20 +13,6 @@ class Operations {
             case "VIII": result = 8; break;
             case "IX": result = 9; break;
             case "X": result = 10; break;
-            default: throw new DataInputException("Неверный ввод данных!");
-        }
-        return result;
-    }
-
-    static int act(int first, String act, int second) {
-        int result;
-        switch (act) {
-            case "+": result = (first + second); break;
-            case "-": result = (first - second); break;
-            case "*": result = (first * second); break;
-            case "/":   if ((first % second) != 0 )  throw  new DataInputException("Результат не целый");
-                if (second > first)  throw  new DataInputException("Неверный ввод данных!");
-                result = (first / second); break;
             default: throw new DataInputException("Неверный ввод данных!");
         }
         return result;

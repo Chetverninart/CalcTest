@@ -16,7 +16,7 @@ class RomanOperand extends Operand {
 
     public RomanOperand(String stringValue) {
         super(stringValue);
-        intValue = Operations.romanToArabic(stringValue);
+        this.intValue = Translate.romanToArabic(stringValue);
     }
 
 }
