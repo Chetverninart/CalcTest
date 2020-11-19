@@ -55,9 +55,8 @@ class Main {
             case "+": result[0] = (first + second); break;
             case "-": result[0] = (first - second); break;
             case "*": result[0] = (first * second); break;
-            case "/": {if (second > first)  throw  new DataInputException("Неверный ввод данных!");
-                result[0] = (first / second);
-                result[1] = (first % second); break;}
+            case "/": result[0] = (first / second);
+                      result[1] = (first % second); break;
             default: throw new DataInputException("Неверный ввод данных!");
         }
         return result;
